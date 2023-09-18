@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Analyzer</title>
+    <style>
+        pre {
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Analyzer</h1>
+    <p>Enter your text below:</p>
+    <textarea id="inputText" rows="10" cols="50"></textarea>
+    <button onclick="analyzeText()">Analyze</button>
+    <pre id="output"></pre>
+
+    <script>
+        function analyzeText() {
+            const inputText = document.getElementById("inputText").value;
+            const paragraphs = inputText.split('\n\n'); // Split text into paragraphs
+
+            let formattedText = '';
+
+            for (const paragraph of paragraphs) {
+                const sentences = paragraph.split('. '); // Split paragraph into sentences
+                const firstSentence = sentences.shift(); // Get the first sentence
+
+                formattedText += `                        <li><b>${firstSentence}</b><br>\n`;
+                formattedText += `                           ${sentences.join('. ')}\n`;
+                formattedText += `                        </li>\n`;
+            }
+
+            const resultHTML = `<ul>\n${formattedText}</ul>`;
+
+            document.getElementById("output").textContent = resultHTML;
+        }
+    </script>
+</body>
+</html>

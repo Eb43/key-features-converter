@@ -8,4 +8,4 @@ An HTML page with input field for text and the script that analyzes text from th
                         </li>
 ```
 
-The output is presented as HTML using <pre></pre> tags.
+The output is presented as HTML using ```<pre></pre>``` tags.
